@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#dce6d8">
+  <title>スナフキンBot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div>
+        <h1>スナフキンBot</h1>
+        <p>川辺にいる、ちょっと話しづらい旅人。</p>
+      </div>
+      <span class="badge">fan-made</span>
+      <div class="camp" aria-hidden="true">
+        <span class="fire">🔥</span>
+        <span class="traveler">🧢</span>
+      </div>
+    </header>
+
+    <section id="chat" class="chat" aria-live="polite">
+      <div class="status"><span></span>今日は川辺にいるようです</div>
+      <div class="message bot">……こんにちは。</div>
+      <div class="message bot">何か話したいことがあるなら、聞くよ。</div>
+
+      <div id="quickChoices" class="quick-choices">
+        <button type="button" data-message="仕事に行きたくない">仕事に行きたくない</button>
+        <button type="button" data-message="自由って何？">自由って何？</button>
+        <button type="button" data-message="なんとなく疲れた">なんとなく疲れた</button>
+        <button type="button" data-message="また来たよ">また来たよ</button>
+      </div>
+
+      <div id="typing" class="typing" hidden>……考えている</div>
+    </section>
+
+    <form id="composer" class="composer">
+      <input id="messageInput" type="text" placeholder="話しかける…" autocomplete="off" enterkeyhint="send" aria-label="メッセージ">
+      <button id="sendButton" type="submit" aria-label="送信">↑</button>
+    </form>
+
+    <footer>非公式のファンメイド作品です。原作の台詞は使用していません。</footer>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>
