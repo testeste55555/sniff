@@ -34,8 +34,8 @@
           </div>
           <span class="local-badge">0円</span>
         </div>
-        <p>会話本文を外部AIへ送らず、対応端末ではブラウザ内で小型AIを動かします。初回のみ大容量のモデル取得が必要です。</p>
-        <button id="loadAiButton" class="primary-action" type="button">ローカルAIを読み込む</button>
+        <p>会話本文を外部AIへ送らず、対応端末ではブラウザ内で小型AIを動かします。初回のみ約300MBのモデル取得が必要です。</p>
+        <button id="loadAiButton" class="primary-action" type="button">ローカルAIを読み込む（約300MB）</button>
         <div id="progressWrap" class="progress-wrap" hidden>
           <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
           <span id="progressText">準備しています…</span>
@@ -64,6 +64,7 @@
 
     <footer>非公式のファンメイド作品です。原作の台詞は使用していません。</footer>
   </main>
-  <script type="module" src="app.js"></script>
+  <script src="persona.js"></script>
+  <script type="module" src="app-v4.js"></script>
 </body>
 </html>
