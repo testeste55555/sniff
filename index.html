@@ -16,33 +16,42 @@
         <h1>スナフキンBot</h1>
         <p>川辺にいる、ちょっと話しづらい旅人。</p>
       </div>
-      <span class="badge">fan-made</span>
+      <span class="badge">fan-made / private</span>
       <div class="camp" aria-hidden="true">
         <span class="fire">🔥</span>
         <span class="traveler">🧢</span>
       </div>
     </header>
 
-    <section class="chat" aria-live="polite">
-      <div class="status"><span></span><b>ローカルAI版は停止しました</b></div>
-      <section class="ai-card">
-        <div class="ai-card-head">
-          <div>
-            <strong>小型モデル実験を終了</strong>
-            <small>このページからAIモデルをダウンロードすることはありません。</small>
-          </div>
-        </div>
-        <p>会話品質と端末負荷のバランスが十分でなかったため、約300MBのローカルAI方式はいったん廃止しました。次の方式を検討中です。</p>
+    <section id="chat" class="chat" aria-live="polite">
+      <div class="status"><span class="ready"></span><b id="statusText">川辺にいるようです</b></div>
+
+      <section class="privacy-card">
+        <strong>0円・外部AIなし</strong>
+        <p>この版はAIモデルをダウンロードせず、会話本文も外部へ送りません。会話はこのタブの中だけで処理します。</p>
       </section>
-      <div class="message bot">……ちょっと荷物を減らすことにしたよ。</div>
+
+      <div id="messages"></div>
+
+      <div id="quickChoices" class="quick-choices">
+        <button type="button" data-message="何してる？">何してる？</button>
+        <button type="button" data-message="ムーミンは？">ムーミンは？</button>
+        <button type="button" data-message="寂しくない？">寂しくない？</button>
+        <button type="button" data-message="規則って嫌い？">規則って嫌い？</button>
+      </div>
     </section>
 
-    <form class="composer">
-      <input type="text" placeholder="次の方式を準備中です" aria-label="メッセージ" disabled>
-      <button type="button" aria-label="送信" disabled>↑</button>
+    <div class="privacy-actions">
+      <button id="clearConversation" type="button">この会話を消す</button>
+    </div>
+
+    <form id="composer" class="composer">
+      <input id="messageInput" type="text" placeholder="話しかける…" autocomplete="off" enterkeyhint="send" aria-label="メッセージ">
+      <button type="submit" aria-label="送信">↑</button>
     </form>
 
     <footer>非公式のファンメイド作品です。原作の台詞は使用していません。</footer>
   </main>
+  <script src="dialogue-v6.js"></script>
 </body>
 </html>
