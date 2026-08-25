@@ -68,16 +68,9 @@
     submitMessage(input.value);
   });
 
-  quickChoices.addEventListener('pointerup', (event) => {
-    const button = event.target.closest('button[data-message]');
-    if (!button) return;
-    event.preventDefault();
-    submitMessage(button.dataset.message);
-  });
-
   quickChoices.addEventListener('click', (event) => {
     const button = event.target.closest('button[data-message]');
-    if (!button || event.pointerType) return;
+    if (!button) return;
     event.preventDefault();
     submitMessage(button.dataset.message);
   });
