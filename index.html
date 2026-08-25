@@ -22,17 +22,10 @@
     </header>
 
     <section id="chat" class="chat" aria-live="polite">
-      <div class="status"><span></span>今日は川辺にいるようです</div>
-      <div class="message bot">……こんにちは。</div>
-      <div class="message bot">何か話したいことがあるなら、聞くよ。</div>
+      <div class="status"><span></span><b id="statusText" style="font-weight:400">川辺にいるようです</b></div>
+      <div id="opening"></div>
 
-      <div id="quickChoices" class="quick-choices">
-        <button type="button" data-message="仕事に行きたくない">仕事に行きたくない</button>
-        <button type="button" data-message="自由って何？">自由って何？</button>
-        <button type="button" data-message="なんとなく疲れた">なんとなく疲れた</button>
-        <button type="button" data-message="また来たよ">また来たよ</button>
-      </div>
-
+      <div id="quickChoices" class="quick-choices"></div>
       <div id="typing" class="typing" hidden>……考えている</div>
     </section>
 
