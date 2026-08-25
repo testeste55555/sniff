@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#dce6d8">
   <meta name="referrer" content="no-referrer">
   <meta name="robots" content="noindex,nofollow">
-  <title>スナフキンBot — Local AI</title>
+  <title>スナフキンBot</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,55 +16,33 @@
         <h1>スナフキンBot</h1>
         <p>川辺にいる、ちょっと話しづらい旅人。</p>
       </div>
-      <span class="badge">fan-made / local AI</span>
+      <span class="badge">fan-made</span>
       <div class="camp" aria-hidden="true">
         <span class="fire">🔥</span>
         <span class="traveler">🧢</span>
       </div>
     </header>
 
-    <section id="chat" class="chat" aria-live="polite">
-      <div class="status"><span id="statusDot"></span><b id="statusText">川辺にいるようです</b></div>
-
-      <section id="aiCard" class="ai-card">
+    <section class="chat" aria-live="polite">
+      <div class="status"><span></span><b>ローカルAI版は停止しました</b></div>
+      <section class="ai-card">
         <div class="ai-card-head">
           <div>
-            <strong>端末の中でAIを動かす</strong>
-            <small id="aiState">まだ読み込んでいません</small>
+            <strong>小型モデル実験を終了</strong>
+            <small>このページからAIモデルをダウンロードすることはありません。</small>
           </div>
-          <span class="local-badge">0円</span>
         </div>
-        <p>会話本文を外部AIへ送らず、ブラウザ内で小型AIを動かします。初回のみ約300MB。iPhoneでは数分かかる場合があります。</p>
-        <button id="loadAiButton" class="primary-action" type="button">ローカルAIを読み込む（約300MB）</button>
-        <div id="progressWrap" class="progress-wrap" hidden>
-          <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
-          <span id="progressText">準備しています…</span>
-        </div>
-        <p id="loadError" class="error" hidden></p>
-        <details>
-          <summary>プライバシーについて</summary>
-          <p>会話本文はこのタブのメモリだけで扱い、GitHubやlocalStorageには保存しません。AI読み込み時はWebLLMとモデル配信元へ通常のファイル取得通信が発生するため、配信元にはIPアドレス等の一般的な通信情報が見える場合があります。</p>
-        </details>
+        <p>会話品質と端末負荷のバランスが十分でなかったため、約300MBのローカルAI方式はいったん廃止しました。次の方式を検討中です。</p>
       </section>
-
-      <div id="opening"></div>
-      <div id="messages"></div>
-      <div id="typing" class="typing" hidden>……考えている</div>
+      <div class="message bot">……ちょっと荷物を減らすことにしたよ。</div>
     </section>
 
-    <div class="privacy-actions">
-      <button id="clearConversation" type="button">この会話を消す</button>
-      <button id="clearDeviceData" type="button">来訪記録も消す</button>
-    </div>
-
-    <form id="composer" class="composer">
-      <input id="messageInput" type="text" placeholder="AIを読み込むと話せます" autocomplete="off" enterkeyhint="send" aria-label="メッセージ" disabled>
-      <button id="sendButton" type="submit" aria-label="送信" disabled>↑</button>
+    <form class="composer">
+      <input type="text" placeholder="次の方式を準備中です" aria-label="メッセージ" disabled>
+      <button type="button" aria-label="送信" disabled>↑</button>
     </form>
 
     <footer>非公式のファンメイド作品です。原作の台詞は使用していません。</footer>
   </main>
-  <script src="persona.js"></script>
-  <script type="module" src="app-v5.js"></script>
 </body>
 </html>
