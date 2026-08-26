@@ -8,7 +8,6 @@ button,input{font:inherit}button{touch-action:manipulation}
 .hero{position:relative;flex:0 0 150px;padding:18px;background:linear-gradient(#cbdcc8 0 55%,#879e7d 55% 62%,#c5cdbb 62%);overflow:hidden}
 .hero h1{margin:0;font-size:25px}.hero p{margin:5px 0 0;font-size:12px;color:#425044}
 .badge{position:absolute;right:14px;top:16px;padding:5px 8px;border:1px solid rgba(38,49,40,.25);border-radius:999px;font-size:10px;background:rgba(248,246,238,.68)}
-.camp{position:absolute;inset:auto 0 8px 0;height:68px}.fire{position:absolute;left:11%;bottom:0;font-size:30px}.traveler{position:absolute;right:11%;bottom:0;font-size:56px;filter:saturate(.55)}
 .chat{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px 14px 16px}
 .status{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;margin-bottom:10px}.status span{width:8px;height:8px;border-radius:50%;background:#8b9688}.status span.ready{background:#5d865f}.status b{font-weight:500}
 .privacy-card{padding:11px 12px;border:1px solid #ccd6c8;border-radius:15px;background:#eef3eb;margin:8px 0 13px}.privacy-card strong{display:block;font-size:13px}.privacy-card p{margin:5px 0 0;font-size:11px;line-height:1.5;color:#5c695d}
@@ -18,5 +17,5 @@ button,input{font:inherit}button{touch-action:manipulation}
 .composer{display:flex;gap:8px;flex:0 0 auto;padding:8px max(10px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));border-top:1px solid var(--line);background:var(--paper)}
 .composer input{flex:1;min-width:0;height:48px;padding:0 14px;border:1px solid #c7cec3;border-radius:14px;background:#fffdf8;font-size:16px;outline:none}.composer button{flex:0 0 50px;width:50px;height:48px;border:0;border-radius:14px;background:var(--green);color:#fff;font-size:22px}
 footer{flex:0 0 auto;padding:0 10px max(7px,env(safe-area-inset-bottom));text-align:center;color:#7d857d;font-size:10px;background:var(--paper)}
-@media(max-height:700px){.hero{flex-basis:118px}.hero p{display:none}.traveler{font-size:44px}.fire{font-size:25px}.camp{height:48px}.privacy-card{display:none}}
+@media(max-height:700px){.hero{flex-basis:118px}.hero p{display:none}.privacy-card{display:none}}
 @media(min-width:761px){body{background:linear-gradient(#dce6d8 0 44%,#aebfa8 44% 47%,#758e72 47% 49%,#d9e0d2 49% 100%)}.app{box-shadow:0 0 30px rgba(30,40,30,.16)}}

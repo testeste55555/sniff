@@ -3,6 +3,7 @@
 
   const stage = document.getElementById('travelerStage');
   const caption = document.getElementById('stageCaption');
+  const image = document.getElementById('travelerImage');
   const form = document.getElementById('composer');
   const input = document.getElementById('messageInput');
   const quick = document.getElementById('quickChoices');
@@ -15,9 +16,20 @@
 
   const captions = {
     idle: '静かに川を見ています',
-    look: '少し視線を外しました',
+    look: '考えごとをしています',
+    smile: '控えめに微笑みました',
+    sit: '川辺に腰を下ろしました',
     harmonica: 'ハーモニカを手に取りました',
     leave: '今日はもう行くようです'
+  };
+
+  const poses = {
+    idle: ['assets/characters/character_idle.webp', '川辺に立つ旅人'],
+    look: ['assets/characters/character_thinking.webp', '考えながらしゃがむ旅人'],
+    smile: ['assets/characters/character_smile.webp', '控えめに微笑む旅人'],
+    sit: ['assets/characters/character_sit.webp', '川辺に腰を下ろす旅人'],
+    harmonica: ['assets/characters/character_harmonica.webp', '座ってハーモニカを吹く旅人'],
+    leave: ['assets/characters/character_smile.webp', '静かに微笑む旅人']
   };
 
   function setState(next, duration = 0) {
@@ -25,6 +37,10 @@
     state = next;
     stage.dataset.state = next;
     caption.textContent = captions[next] || '';
+    if (image && poses[next]) {
+      image.src = poses[next][0];
+      image.alt = poses[next][1];
+    }
 
     if (duration > 0 && next !== 'leave') {
       resetTimer = setTimeout(() => setState('idle'), duration);
@@ -42,6 +58,16 @@
 
     if (/ハーモニカ|吹いて|曲|音楽/.test(t)) {
       setState('harmonica', 3600);
+      return;
+    }
+
+    if (/ありがとう|ありがと|嬉し|うれし/.test(t)) {
+      setState('smile', 2400);
+      return;
+    }
+
+    if (/座って|すわって|休んで|ひと休み/.test(t)) {
+      setState('sit', 3200);
       return;
     }
 
