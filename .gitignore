@@ -14,8 +14,10 @@ config.local.*
 *.log
 logs/
 .cache/
+cache/
 tmp/
 temp/
+.local/
 
 # Dependencies / build output (if added later)
 node_modules/
@@ -33,3 +35,4 @@ conversation*.json
 chat*.json
 session*.json
 local-data/
+user-data/
