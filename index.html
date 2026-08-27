@@ -6,22 +6,22 @@
   <meta name="theme-color" content="#dce6d8">
   <meta name="referrer" content="no-referrer">
   <meta name="robots" content="noindex,nofollow">
-  <title>スナフキンBot</title>
+  <title>Sniff — 川辺の一日</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="character-motion.css">
   <link rel="stylesheet" href="scene-static.css">
 </head>
 <body>
   <main class="app">
-    <header class="hero">
+    <header class="app-header">
       <div>
-        <h1>スナフキンBot</h1>
-        <p>川辺にいる、ちょっと話しづらい旅人。</p>
+        <h1>Sniff</h1>
+        <p>川辺の旅人に会いに行く、今日の短い出来事。</p>
       </div>
-      <span class="badge">fan-made / private</span>
+      <span class="badge">fan-made</span>
     </header>
 
-    <section id="travelerStage" class="traveler-stage" data-state="idle" data-time="day" aria-label="川辺のキャンプにいる旅人">
+    <section id="travelerStage" class="traveler-stage" data-state="idle" data-pose="idle" data-time="day" data-weather="clear" data-fire="normal" aria-label="川辺のキャンプにいる旅人">
       <img class="scene-layer scene-bg" src="assets/scene/bg_riverside.webp" alt="森と山に囲まれた静かな川辺" width="1536" height="1024" fetchpriority="high">
       <img class="scene-layer scene-ground" src="assets/scene/ground_camp.webp" alt="" width="1024" height="384" decoding="async">
       <img class="scene-layer scene-log" src="assets/scene/fallen_log.webp" alt="" width="768" height="320" decoding="async">
@@ -34,7 +34,7 @@
         <img class="fire-shadow-layer" src="assets/fire/fire_shadow.webp" alt="" width="256" height="128" decoding="async">
         <img class="fire-glow-layer" src="assets/fire/fire_glow.webp" alt="" width="256" height="128" decoding="async">
         <img class="fire-smoke-layer" src="assets/fire/fire_smoke.webp" alt="" width="256" height="256" decoding="async">
-        <img class="fire-body-layer" src="assets/fire/fire_02.webp" alt="" width="256" height="256" decoding="async">
+        <img id="fireBody" class="fire-body-layer" src="assets/fire/fire_02.webp" alt="" width="256" height="256" decoding="async">
         <img class="fire-embers-layer" src="assets/fire/fire_embers.webp" alt="" width="256" height="256" decoding="async">
       </div>
 
@@ -44,40 +44,50 @@
       </div>
       <img class="scene-layer scene-foreground-tree" src="assets/scene/foreground_tree.webp" alt="" width="512" height="1024" decoding="async">
       <div class="scene-tone" aria-hidden="true"></div>
+      <div class="weather-layer" aria-hidden="true"></div>
       <div id="stageCaption" class="stage-caption">静かに川を見ています</div>
     </section>
 
-    <section id="chat" class="chat" aria-live="polite">
-      <div class="status"><span class="ready"></span><b id="statusText">川辺にいるようです</b></div>
+    <section class="run-panel" aria-label="今日の出来事">
+      <p id="runSituation" class="run-situation"></p>
 
-      <section class="privacy-card">
-        <strong>0円・外部AIなし</strong>
-        <p>会話本文は外部へ送りません。1日1ランの会話ローグライトとして育てています。</p>
-      </section>
-
-      <div id="messages"></div>
-
-      <div id="quickChoices" class="quick-choices">
-        <button type="button" data-message="何してる？">何してる？</button>
-        <button type="button" data-message="ムーミンは？">ムーミンは？</button>
-        <button type="button" data-message="ハーモニカ吹いて">ハーモニカ吹いて</button>
-        <button type="button" data-message="またね">今日は帰る</button>
+      <div class="speech-card" aria-live="polite">
+        <span class="speaker">旅人</span>
+        <p id="travelerSpeech"></p>
       </div>
+
+      <div id="runEnding" class="run-ending" hidden>
+        <p id="memoryText" class="memory-note" hidden></p>
+        <p id="closingText" class="closing-text"></p>
+      </div>
+
+      <div id="choiceList" class="choice-list" aria-label="行動を選ぶ"></div>
+
+      <button id="otherTopicToggle" class="other-topic-toggle" type="button" hidden>ほかの話をする</button>
+      <form id="otherTopicForm" class="other-topic-form" hidden>
+        <label for="otherTopicInput">短く話す</label>
+        <div>
+          <input id="otherTopicInput" type="text" maxlength="120" autocomplete="off" enterkeyhint="send" placeholder="話題や、今の気持ち" required>
+          <button type="submit">話す</button>
+        </div>
+        <small>入力した文は保存されません。</small>
+      </form>
+      <p id="otherTopicReply" class="other-topic-reply" aria-live="polite" hidden></p>
+
+      <details class="settings">
+        <summary>この作品と端末の記録</summary>
+        <p>今日の進行、来訪回数、距離感、出来事のIDだけをこの端末に保存します。会話文や自由入力の本文は保存・送信しません。</p>
+        <button id="clearDeviceState" type="button">端末の記録を消す</button>
+      </details>
     </section>
-
-    <div class="privacy-actions">
-      <button id="clearConversation" type="button">この会話を消す</button>
-    </div>
-
-    <form id="composer" class="composer">
-      <input id="messageInput" type="text" placeholder="話しかける…" autocomplete="off" enterkeyhint="send" aria-label="メッセージ">
-      <button type="submit" aria-label="送信">↑</button>
-    </form>
 
     <footer>非公式のファンメイド作品です。原作の台詞は使用していません。</footer>
   </main>
-  <script src="dialogue.js"></script>
+  <script src="run-content.js"></script>
+  <script src="run-storage.js"></script>
+  <script src="run-engine.js"></script>
   <script src="scene-static.js"></script>
   <script src="character-motion.js"></script>
+  <script src="run-ui.js"></script>
 </body>
 </html>
