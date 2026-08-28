@@ -1,4 +1,4 @@
-.traveler-stage[data-state="look"] .traveler-wrap img {
+.traveler-stage[data-state="thinking"] .traveler-wrap img {
   transform: translateY(1px) rotate(-0.5deg);
 }
 
@@ -18,7 +18,7 @@
   background: rgba(239, 232, 205, 0.86);
 }
 
-.traveler-stage[data-state="leave"] .stage-caption {
+.traveler-stage[data-leaving="true"] .stage-caption {
   opacity: 0.75;
 }
 
